@@ -4,7 +4,7 @@ import torchvision
 from torch.utils.data import DataLoader
 from torchvision.datasets import ImageFolder
 import os
-from backbone import resnet18
+from imgclassifier.backbone import resnet18
 
 
 def train(
