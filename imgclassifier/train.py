@@ -75,7 +75,7 @@ def train(
 	print('test begins...')
 	test_acc, targets, preds = test(
 		model=model,
-		test_loader=test_loader
+		test_loader=test_loader,
 		device=device
 	)
 	print('test ends...')
