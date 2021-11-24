@@ -68,4 +68,4 @@ def train(
 	#         print('model saved')
 
 	    print(f'Epoch: {epoch}, Correct/Total: {correct_preds}/{train_count}, Train Loss: {train_loss:.2f}, Train Acc: {train_acc:.2f}')
-	return train_acc, train_loss
+	return model, train_acc, train_loss
