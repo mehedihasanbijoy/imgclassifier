@@ -5,5 +5,6 @@
 # from torchvision.datasets import ImageFolder
 # import os
 from imgclassifier.backbone import resnet18
-from imgclassifier.train import train, test
+from imgclassifier.train import train
+from imgclassifier.test import test
 
