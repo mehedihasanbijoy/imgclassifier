@@ -6,5 +6,5 @@
 # import os
 from imgclassifier.backbone import resnet18
 from imgclassifier.train import train
-from imgclassifier.test import test
+# from imgclassifier.test import test
 

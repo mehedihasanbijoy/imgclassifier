@@ -5,6 +5,7 @@ from torch.utils.data import DataLoader
 from torchvision.datasets import ImageFolder
 import os
 from imgclassifier.backbone import resnet18
+from imgclassifier.test import test
 
 
 def train(
@@ -41,6 +42,7 @@ def train(
 	optimizer = torch.optim.Adam(model.parameters(), lr=0.001, betas=(0.9, 0.999), weight_decay=0)
 	loss_fn = torch.nn.CrossEntropyLoss()
 
+	print('training begins...')
 	# current_loss = 10000000.
 	for epoch in range(epochs):
 	    model.train()
@@ -68,4 +70,13 @@ def train(
 	#         print('model saved')
 
 	    print(f'Epoch: {epoch}, Correct/Total: {correct_preds}/{train_count}, Train Loss: {train_loss:.2f}, Train Acc: {train_acc:.2f}')
-	return model, train_acc, train_loss, test_loader
+	print('training ends...')
+
+	print('test begins...')
+	test_acc, targets, preds = test(
+		model=model,
+		test_loader=test_loader
+		device=device
+	)
+	print('test ends...')
+	return model, train_acc, train_loss, test_acc, targets, preds
