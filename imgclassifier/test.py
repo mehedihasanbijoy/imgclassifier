@@ -1,7 +1,7 @@
 import torch
 import numpy as np
 
-def train(
+def test(
 	model,
 	test_loader,
 	device='cuda'
