@@ -46,7 +46,7 @@ def train(
 	    model.train()
 	    train_count, correct_preds = 0, 0   
 	    train_loss = 0.
-	    for i, (images, labels) in enumerate(train_loader):
+	    for i, (images, labels) in enumerate(test_loader):
 	        images, labels = images.to(device), labels.to(device)
 	        outputs = model(images)
 	        # outputs = torch.matmul(features.float(), embedding.float())
@@ -68,4 +68,4 @@ def train(
 	#         print('model saved')
 
 	    print(f'Epoch: {epoch}, Correct/Total: {correct_preds}/{train_count}, Train Loss: {train_loss:.2f}, Train Acc: {train_acc:.2f}')
-	return model, train_acc, train_loss, test_loader
+	return model, train_acc, train_loss
