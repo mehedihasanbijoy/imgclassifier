@@ -7,7 +7,7 @@ def test(
 	device='cuda'
 ):	
 	model.eval()
-	correct_preds, test_count = 0, 0, 0
+	correct_preds, test_count = 0, 0
 	actual, predictions = [], []
 	for i, (images, labels) in enumerate(test_loader):
 		images, labels = images.to(device), labels.to(device)
