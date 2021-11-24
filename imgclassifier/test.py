@@ -1,71 +1,22 @@
 import torch
-import torchvision
-
-from torch.utils.data import DataLoader
-from torchvision.datasets import ImageFolder
-import os
-from imgclassifier.backbone import resnet18
-
+import numpy as np
 
 def train(
-	data_root, 
-	folder_structure='ImageFolder',
-	backbone='resnet18',
-	device='cuda', 
-	epochs=20,
+	model,
+	test_loader,
+	device='cuda'
 ):	
-	if folder_structure=='ImageFolder':
-		train_set_root = os.path.join(data_root, 'Train')
-		test_set_root = os.path.join(data_root, 'Test')
-
-		transform = torchvision.transforms.Compose([
-		    # torchvision.transforms.ToPILImage(),
-		    torchvision.transforms.Resize((40, 40)),
-		    torchvision.transforms.ToTensor()
-		])
-
-		train_loader = DataLoader(
-		    ImageFolder(train_set_root, transform=transform),
-		    batch_size = 32, shuffle = True, pin_memory = True, drop_last = True, num_workers = 2
-		)
-		test_loader = DataLoader(
-		    ImageFolder(test_set_root, transform=transform),
-		    batch_size = 32, shuffle = True, pin_memory = True, drop_last = True, num_workers = 2
-		)
-
-	num_classes = len(os.listdir(os.path.join(data_root, 'Train')))
-
-	if backbone=='resnet18':
-		model = resnet18(num_classes).to(device)
-
-	optimizer = torch.optim.Adam(model.parameters(), lr=0.001, betas=(0.9, 0.999), weight_decay=0)
-	loss_fn = torch.nn.CrossEntropyLoss()
-
-	# current_loss = 10000000.
-	for epoch in range(epochs):
-	    model.train()
-	    train_count, correct_preds = 0, 0   
-	    train_loss = 0.
-	    for i, (images, labels) in enumerate(test_loader):
-	        images, labels = images.to(device), labels.to(device)
-	        outputs = model(images)
-	        # outputs = torch.matmul(features.float(), embedding.float())
-	        optimizer.zero_grad()
-	        loss = loss_fn(outputs, labels)
-	        loss.backward()
-	        optimizer.step()
-	        # _, targets = torch.max(labels.data, 1)
-	        _, preds = torch.max(outputs.data, 1)
-	        train_count += labels.shape[0]
-	        correct_preds += (preds == labels).sum().item()
-	        train_loss += loss.item() * labels.shape[0]
-	    train_acc = (correct_preds / train_count)
-	    train_loss = (train_loss / train_count)
-
-	#     if train_loss < current_loss:
-	#         current_loss = train_loss
-	#         torch.save(model.state_dict(), '/content/model.pth')
-	#         print('model saved')
-
-	    print(f'Epoch: {epoch}, Correct/Total: {correct_preds}/{train_count}, Train Loss: {train_loss:.2f}, Train Acc: {train_acc:.2f}')
-	return model, train_acc, train_loss
+	model.eval()
+	correct_preds, test_count = 0, 0, 0
+	actual, predictions = [], []
+	for i, (images, labels) in enumerate(test_loader):
+		images, labels = images.to(device), labels.to(device)
+		outputs = model(images)
+		_, preds = torch.max(outputs.data, 1)
+		test_count += labels.shape[0]
+		correct_preds += (preds == labels).sum().item()
+		actual.append(labels.cpu().numpy())
+		predictions.append(preds.cpu().numpy())
+	test_acc = (correct_preds / test_count)
+	print(f'Correct/Total: {correct_preds}/{test_count}, Test Accuracy: {test_acc:.4f}')
+	return test_acc, np.array(actual).flatten(), np.array(predictions).flatten()
