@@ -49,7 +49,7 @@ def train(
 	for epoch in range(epochs):
 		model.train()
 		print(f'Epoch: {epoch}')
-	    train_count, correct_preds = 0, 0   
+		train_count, correct_preds = 0, 0 
 	    train_loss = 0.
 	    for i, (images, labels) in enumerate(train_loader):
 	        images, labels = images.to(device), labels.to(device)
