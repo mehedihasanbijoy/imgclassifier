@@ -49,36 +49,36 @@ def train(
 	for epoch in range(epochs):
 		model.train()
 		print(f'Epoch: {epoch}')
-		train_count, correct_preds = 0, 0 
-	    train_loss = 0.
-	    for i, (images, labels) in enumerate(train_loader):
-	        images, labels = images.to(device), labels.to(device)
-	        outputs = model(images)
-	        # outputs = torch.matmul(features.float(), embedding.float())
-	        optimizer.zero_grad()
-	        loss = loss_fn(outputs, labels)
-	        loss.backward()
-	        optimizer.step()
-	        # _, targets = torch.max(labels.data, 1)
-	        _, preds = torch.max(outputs.data, 1)
-	        train_count += labels.shape[0]
-	        correct_preds += (preds == labels).sum().item()
-	        train_loss += loss.item() * labels.shape[0]
-	    train_acc = (correct_preds / train_count)
-	    train_loss = (train_loss / train_count)
+		train_count, correct_preds = 0, 0
+		train_loss = 0.
+		for i, (images, labels) in enumerate(train_loader):
+			images, labels = images.to(device), labels.to(device)
+			outputs = model(images)
+			# outputs = torch.matmul(features.float(), embedding.float())
+			optimizer.zero_grad()
+			loss = loss_fn(outputs, labels)
+			loss.backward()
+			optimizer.step()
+			# _, targets = torch.max(labels.data, 1)
+			_, preds = torch.max(outputs.data, 1)
+			train_count += labels.shape[0]
+			correct_preds += (preds == labels).sum().item()
+			train_loss += loss.item() * labels.shape[0]
 
-	    if train_loss < current_loss:
-	        current_loss = train_loss
-	        torch.save(model.state_dict(), '/content/model.pth')
-	        print('model saved')
+		train_acc = (correct_preds / train_count)
+		train_loss = (train_loss / train_count)
 
-	    print(f'Train: Correct/Total: {correct_preds}/{train_count}, Train Loss: {train_loss:.2f}, Train Acc: {train_acc:.2f}')
+		if train_loss < current_loss:
+			current_loss = train_loss
+			torch.save(model.state_dict(), 'model.pth')
+			print('model saved')
+		print(f'Train: Correct/Total: {correct_preds}/{train_count}, Train Loss: {train_loss:.2f}, Train Acc: {train_acc:.2f}')
 
-	    model.load_state_dict(torch.load('/content/model.pth'))
+		model.load_state_dict(torch.load('/content/model.pth'))
 		test_acc, targets, preds = test(
 			model=model,
 			test_loader=test_loader,
 			device=device
 		)
-
+		
 	return model, train_acc, train_loss, test_acc, targets, preds
