@@ -11,7 +11,9 @@ from imgclassifier.test import test
 def train(
 	data_root, 
 	folder_structure='ImageFolder',
+	df = None,
 	backbone='resnet18',
+	transform = None,
 	device='cuda', 
 	epochs=20,
 ):	
@@ -42,9 +44,10 @@ def train(
 	optimizer = torch.optim.Adam(model.parameters(), lr=0.001, betas=(0.9, 0.999), weight_decay=0)
 	loss_fn = torch.nn.CrossEntropyLoss()
 
-	print('training begins...')
-	# current_loss = 10000000.
+	
+	current_loss = 10000000.
 	for epoch in range(epochs):
+		print(f'Epoch: {epoch}')
 	    model.train()
 	    train_count, correct_preds = 0, 0   
 	    train_loss = 0.
@@ -64,19 +67,18 @@ def train(
 	    train_acc = (correct_preds / train_count)
 	    train_loss = (train_loss / train_count)
 
-	#     if train_loss < current_loss:
-	#         current_loss = train_loss
-	#         torch.save(model.state_dict(), '/content/model.pth')
-	#         print('model saved')
+	    if train_loss < current_loss:
+	        current_loss = train_loss
+	        torch.save(model.state_dict(), '/content/model.pth')
+	        print('model saved')
 
-	    print(f'Epoch: {epoch}, Correct/Total: {correct_preds}/{train_count}, Train Loss: {train_loss:.2f}, Train Acc: {train_acc:.2f}')
-	print('training ends...')
+	    print(f'Train: Correct/Total: {correct_preds}/{train_count}, Train Loss: {train_loss:.2f}, Train Acc: {train_acc:.2f}')
 
-	print('test begins...')
-	test_acc, targets, preds = test(
-		model=model,
-		test_loader=test_loader,
-		device=device
-	)
-	print('test ends...')
+	    model.load_state_dict(torch.load('/content/model.pth'))
+		test_acc, targets, preds = test(
+			model=model,
+			test_loader=test_loader,
+			device=device
+		)
+
 	return model, train_acc, train_loss, test_acc, targets, preds

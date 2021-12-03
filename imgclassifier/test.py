@@ -18,5 +18,5 @@ def test(
 		actual.append(labels.cpu().numpy())
 		predictions.append(preds.cpu().numpy())
 	test_acc = (correct_preds / test_count)
-	print(f'Correct/Total: {correct_preds}/{test_count}, Test Accuracy: {test_acc:.4f}')
+	print(f'Test: Correct/Total: {correct_preds}/{test_count}, Test Accuracy: {test_acc:.4f}')
 	return test_acc, np.array(actual).flatten(), np.array(predictions).flatten()
