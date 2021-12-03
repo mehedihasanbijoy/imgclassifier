@@ -30,3 +30,7 @@ evaluation_report(targets, preds)
 ```
 
 ## Current Version : '0.0.1'
+
+
+## Notebooks
+#### Bangla Handwritten Character Recognition: https://colab.research.google.com/drive/13pu3Mw7FVPGV-f_g2VhVOMiE-wrhPo3F?usp=sharing
