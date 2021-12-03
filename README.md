@@ -33,4 +33,7 @@ evaluation_report(targets, preds)
 
 
 ## Notebooks
-#### Bangla Handwritten Character Recognition: https://colab.research.google.com/drive/13pu3Mw7FVPGV-f_g2VhVOMiE-wrhPo3F?usp=sharing
+#### Bangla Handwritten Character Recognition using imgclassifier
+```
+https://colab.research.google.com/drive/13pu3Mw7FVPGV-f_g2VhVOMiE-wrhPo3F?usp=sharing
+```
