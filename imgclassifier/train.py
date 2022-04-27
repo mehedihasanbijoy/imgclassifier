@@ -4,11 +4,13 @@ import torchvision
 from torch.utils.data import DataLoader
 from torchvision.datasets import ImageFolder
 import os
+from sklearn.model_selection import train_test_split
 
 from torchvision.models.resnet import resnet34
 # from imgclassifier.backbone import resnet18
 from imgclassifier.backbone import *
 from imgclassifier.test import test
+from imgclassifier.custom_dataset import *
 
 
 def train(
@@ -20,7 +22,7 @@ def train(
 	device='cuda', 
 	epochs=20,
 ):	
-	if folder_structure=='ImageFolder':
+	if folder_structure.lower()=='imagefolder':
 		train_set_root = os.path.join(data_root, 'Train')
 		test_set_root = os.path.join(data_root, 'Test')
 
@@ -38,6 +40,23 @@ def train(
 		    ImageFolder(test_set_root, transform=transform),
 		    batch_size = 32, shuffle = True, pin_memory = True, drop_last = True, num_workers = 2
 		)
+	
+	elif folder_structure.lower()=='custom':
+		# transform = torchvision.transforms.Compose([
+		#     torchvision.transforms.ToPILImage(),
+		#     torchvision.transforms.Resize((40, 40)),
+		#     torchvision.transforms.ToTensor()
+		# ])
+
+		train_df, test_df = train_test_split(df, test_size=.2)
+
+		dataset_train = CustomDataset(root_dir=root_dir, df=train_df, transform=transform)
+		dataset_test = CustomDataset(root_dir=root_dir, df=test_df, transform=transform)
+
+		train_loader = torch.utils.data.DataLoader(dataset=dataset_train, batch_size=32, shuffle=True, drop_last=True, pin_memory=True)
+		test_loader = torch.utils.data.DataLoader(dataset=dataset_train, batch_size=32, shuffle=True, drop_last=False, pin_memory=True)
+
+
 
 	num_classes = len(os.listdir(os.path.join(data_root, 'Train')))
 
