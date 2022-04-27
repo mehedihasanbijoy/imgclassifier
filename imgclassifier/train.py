@@ -40,7 +40,7 @@ def train(
 		    ImageFolder(test_set_root, transform=transform),
 		    batch_size = 32, shuffle = True, pin_memory = True, drop_last = True, num_workers = 2
 		)
-	
+
 	elif folder_structure.lower()=='custom':
 		# transform = torchvision.transforms.Compose([
 		#     torchvision.transforms.ToPILImage(),
@@ -54,7 +54,7 @@ def train(
 		dataset_test = CustomDataset(root_dir=root_dir, df=test_df, transform=transform)
 
 		train_loader = torch.utils.data.DataLoader(dataset=dataset_train, batch_size=32, shuffle=True, drop_last=True, pin_memory=True)
-		test_loader = torch.utils.data.DataLoader(dataset=dataset_train, batch_size=32, shuffle=True, drop_last=False, pin_memory=True)
+		test_loader = torch.utils.data.DataLoader(dataset=dataset_test, batch_size=32, shuffle=True, drop_last=False, pin_memory=True)
 
 
 
@@ -62,50 +62,50 @@ def train(
 
 	if backbone=='alexnet':
 		model = alexnet(num_classes).to(device)
-    elif backbone=='vgg11':
+	elif backbone=='vgg11':
 		model = vgg11(num_classes).to(device)
-    elif backbone=='vgg13':
+	elif backbone=='vgg13':
 		model = vgg13(num_classes).to(device)
-    elif backbone=='vgg16':
+	elif backbone=='vgg16':
 		model = vgg16(num_classes).to(device)
-    elif backbone=='vgg19':
+	elif backbone=='vgg19':
 		model = vgg19(num_classes).to(device)
-    elif backbone=='resnet18':
+	elif backbone=='resnet18':
 		model = resnet18(num_classes).to(device)
-    elif backbone=='resnet34':
+	elif backbone=='resnet34':
 		model = resnet34(num_classes).to(device)
-    elif backbone=='resnet50':
+	elif backbone=='resnet50':
 		model = resnet50(num_classes).to(device)
-    elif backbone=='resnet101':
+	elif backbone=='resnet101':
 		model = resnet101(num_classes).to(device)
-    elif backbone=='resnet152':
+	elif backbone=='resnet152':
 		model = resnet152(num_classes).to(device)
-    elif backbone=='densenet121':
+	elif backbone=='densenet121':
 		model = densenet121(num_classes).to(device)
-    elif backbone=='densenet161':
+	elif backbone=='densenet161':
 		model = densenet161(num_classes).to(device)
-    elif backbone=='densenet169':
+	elif backbone=='densenet169':
 		model = densenet169(num_classes).to(device)
-    elif backbone=='densenet201':
+	elif backbone=='densenet201':
 		model = densenet201(num_classes).to(device)
-    elif backbone=='mobilenet_v2':
+	elif backbone=='mobilenet_v2':
 		model = mobilenet_v2(num_classes).to(device)
-    elif backbone=='mobilenet_v3_large':
+	elif backbone=='mobilenet_v3_large':
 		model = mobilenet_v3_large(num_classes).to(device)
-    elif backbone=='mobilenet_v3_small':
+	elif backbone=='mobilenet_v3_small':
 		model = mobilenet_v3_small(num_classes).to(device)
-    elif backbone=='mnasnet1_0':
+	elif backbone=='mnasnet1_0':
 		model = mnasnet1_0(num_classes).to(device)
-    elif backbone=='mnasnet0_5':
+	elif backbone=='mnasnet0_5':
 		model = mnasnet0_5(num_classes).to(device)
-    elif backbone=='shufflenet_v2_x1_0':
+	elif backbone=='shufflenet_v2_x1_0':
 		model = shufflenet_v2_x1_0(num_classes).to(device)
-    elif backbone=='resnext101_32x8d':
+	elif backbone=='resnext101_32x8d':
 		model = resnext101_32x8d(num_classes).to(device)
-    elif backbone=='resnext50_32x4d':
+	elif backbone=='resnext50_32x4d':
 		model = resnext50_32x4d(num_classes).to(device)
-    else:
-        print("WARNING - Model Name Does Not Exist\nDefault ResNet18 is being used\n\n")
+	else:
+		print("WARNING - Model Name Does Not Exist\nDefault ResNet18 is being used\n\n")
 		model = resnet18(num_classes).to(device)
 
 
