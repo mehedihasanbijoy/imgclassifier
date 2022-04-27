@@ -50,8 +50,8 @@ def train(
 
 		train_df, test_df = train_test_split(df, test_size=.2)
 
-		dataset_train = CustomDataset(root_dir=root_dir, df=train_df, transform=transform)
-		dataset_test = CustomDataset(root_dir=root_dir, df=test_df, transform=transform)
+		dataset_train = CustomDataset(root_dir=data_root, df=train_df, transform=transform)
+		dataset_test = CustomDataset(root_dir=data_root, df=test_df, transform=transform)
 
 		train_loader = torch.utils.data.DataLoader(dataset=dataset_train, batch_size=32, shuffle=True, drop_last=True, pin_memory=True)
 		test_loader = torch.utils.data.DataLoader(dataset=dataset_test, batch_size=32, shuffle=True, drop_last=False, pin_memory=True)
