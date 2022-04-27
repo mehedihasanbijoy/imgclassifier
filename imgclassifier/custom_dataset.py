@@ -1,4 +1,4 @@
-import torch, torchvision, cv2, os
+import torch, torchvision, cv2, os, pandas as pd
 
 class CustomDataset(torch.utils.data.Dataset):
     def __init__(self, root_dir, df, transform):
