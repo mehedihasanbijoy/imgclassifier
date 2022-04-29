@@ -130,7 +130,7 @@ def train(
 			loss = loss_fn(outputs, labels)
 			loss.backward()
 			optimizer.step()
-			if folder_structure=='custom':
+			if folder_structure.lower()=='custom':
 				_, targets = torch.max(labels.data, 1)
 			# _, targets = torch.max(labels.data, 1)
 			_, preds = torch.max(outputs.data, 1)
