@@ -41,6 +41,9 @@ def train(
 		    batch_size = 32, shuffle = True, pin_memory = True, drop_last = True, num_workers = 2
 		)
 
+		num_classes = len(os.listdir(os.path.join(data_root, 'Train')))
+
+
 	elif folder_structure.lower()=='custom':
 		# transform = torchvision.transforms.Compose([
 		#     torchvision.transforms.ToPILImage(),
@@ -56,9 +59,9 @@ def train(
 		train_loader = torch.utils.data.DataLoader(dataset=dataset_train, batch_size=32, shuffle=True, drop_last=True, pin_memory=True)
 		test_loader = torch.utils.data.DataLoader(dataset=dataset_test, batch_size=32, shuffle=True, drop_last=False, pin_memory=True)
 
+		num_classes = len(os.listdir(data_root))
 
 
-	num_classes = len(os.listdir(os.path.join(data_root, 'Train')))
 
 	if backbone=='alexnet':
 		model = alexnet(num_classes).to(device)
