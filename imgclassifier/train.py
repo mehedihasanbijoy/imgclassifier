@@ -124,14 +124,17 @@ def train(
 		train_loss = 0.
 		for i, (images, labels) in enumerate(train_loader):
 			images, labels = images.to(device), labels.to(device)
+			if folder_structure.lower()=='custom':
+				_, labels = torch.max(labels.data, 1)
+
 			outputs = model(images)
 			# outputs = torch.matmul(features.float(), embedding.float())
+			
 			optimizer.zero_grad()
 			loss = loss_fn(outputs, labels)
 			loss.backward()
 			optimizer.step()
-			if folder_structure.lower()=='custom':
-				_, labels = torch.max(labels.data, 1)
+			
 			# _, targets = torch.max(labels.data, 1)
 			_, preds = torch.max(outputs.data, 1)
 			train_count += labels.shape[0]
