@@ -131,7 +131,7 @@ def train(
 			loss.backward()
 			optimizer.step()
 			if folder_structure.lower()=='custom':
-				_, targets = torch.max(labels.data, 1)
+				_, labels = torch.max(labels.data, 1)
 			# _, targets = torch.max(labels.data, 1)
 			_, preds = torch.max(outputs.data, 1)
 			train_count += labels.shape[0]
