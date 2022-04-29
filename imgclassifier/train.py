@@ -4,6 +4,7 @@ import torchvision
 from torch.utils.data import DataLoader
 from torchvision.datasets import ImageFolder
 import os
+from tqdm import tqdm
 from sklearn.model_selection import train_test_split
 
 from torchvision.models.resnet import resnet34
@@ -122,7 +123,7 @@ def train(
 		print(f'Epoch: {epoch}')
 		train_count, correct_preds = 0, 0
 		train_loss = 0.
-		for i, (images, labels) in enumerate(train_loader):
+		for i, (images, labels) in enumerate(tqdm(train_loader)):
 			images, labels = images.to(device), labels.to(device)
 			if folder_structure.lower()=='custom':
 				_, labels = torch.max(labels.data, 1)
