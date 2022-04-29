@@ -9,3 +9,4 @@ def evaluation_report(targets, preds, average='macro'):
     acc = accuracy_score(y_true=targets, y_pred=preds)
 
     print(f'Precision = {pr:.4f}, \nRecall = {re:.4f}, \nF1 Score = {f1:.4f}, \nAccuracy Score = {acc:.4f}')
+    return pr, re, f1, acc
