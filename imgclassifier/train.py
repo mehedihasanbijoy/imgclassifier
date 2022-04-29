@@ -129,7 +129,7 @@ def train(
 
 			outputs = model(images)
 			# outputs = torch.matmul(features.float(), embedding.float())
-			
+
 			optimizer.zero_grad()
 			loss = loss_fn(outputs, labels)
 			loss.backward()
@@ -154,7 +154,8 @@ def train(
 		test_acc, targets, preds = test(
 			model=model,
 			test_loader=test_loader,
-			device=device
+			device=device,
+			folder_structure=folder_structure
 		)
 		
 	return model, train_acc, train_loss, test_acc, targets, preds
