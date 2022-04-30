@@ -1,6 +1,6 @@
 <h1 align="center">imgclassifier</h1>
   <p align="center">
-    It is a naive image classifier developed on top of Pytorch. One can train and evaluate an image classifier on a custom dataset by simply calling the <b>train</b> function of this package.
+    It is a naive image classifier developed on top of Pytorch. One can train a model and evaluate the performance (PR, RE, F1, ACC) of the model on a custom dataset by simply calling the <b>train</b> function of this package.
   </p>
 
 <h3 align="center">Current Version: :zero:.:zero:.:two:</h3>
