@@ -9,6 +9,10 @@
 
 :heavy_check_mark: **Available Directory Structures:** :heavy_minus_sign: ImageFolder :heavy_minus_sign: Custom.
 
+| ImageFolder | Custom |
+| :---         |     :---       |
+|<p>*Dataset<br>├── Train<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── classes<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── images<br>├── Validation<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── classes<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── images<br>├── Test<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── classes<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── images<br>*</p>    |  *Dataset<br>└── Classes<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── images<br>* </p>   |
+
 
 ## Installation
 ```
@@ -16,7 +20,23 @@
 ```
 
 ## Usage
-### Train and test the model
+
+### Train and test the model using Custom directory structore
+```
+from imgclassifier import train
+
+model, train_acc, train_loss, test_acc, targets, preds = train(
+    data_root='/Your/Dataset/Path', 
+    folder_structure='Custom', 
+    df = df,
+    backbone='resnet18',
+    transform = transform,
+    device='cuda' if torch.cuda.is_available() else 'cpu', 
+    epochs=10
+)
+```
+
+### Train and test the model using ImageFolder directory structure
 ```
 from imgclassifier import train
 
