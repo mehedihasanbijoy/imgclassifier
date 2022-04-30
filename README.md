@@ -3,6 +3,13 @@
     It is a naive image classifier developed on top of Pytorch. One can train and evaluate an image classifier on a custom dataset by simply calling the <b>train</b> function of this package.
   </p>
 
+<h3 align="center">Current Version: :zero:.:zero:.:two:</h3>
+
+:heavy_check_mark: **Available backbones:** :heavy_minus_sign: default (resnet18) :heavy_minus_sign: alexnet :heavy_minus_sign: vgg11 :heavy_minus_sign: vgg13 :heavy_minus_sign: vgg16 :heavy_minus_sign: vgg19 :heavy_minus_sign: resnet18 :heavy_minus_sign: resnet34 :heavy_minus_sign: resnet50 :heavy_minus_sign: resnet101 :heavy_minus_sign: resnet152 :heavy_minus_sign: densenet121 :heavy_minus_sign: densenet161 :heavy_minus_sign: densenet169 :heavy_minus_sign: densenet201 :heavy_minus_sign: mobilenet_v2 :heavy_minus_sign: mobilenet_v3_large :heavy_minus_sign: mobilenet_v3_small :heavy_minus_sign: mnasnet1_0 :heavy_minus_sign: mnasnet0_5 :heavy_minus_sign: shufflenet_v2_x1_0 :heavy_minus_sign: resnext101_32x8d :heavy_minus_sign: resnext50_32x4d.
+
+:heavy_check_mark: **Available Directory Structures:** :heavy_minus_sign: ImageFolder :heavy_minus_sign: Custom.
+
+
 ## Installation
 ```
 !pip install git+https://github.com/mehedihasanbijoy/imgclassifier.git
@@ -29,10 +36,9 @@ from imgclassifier import evaluation_report
 evaluation_report(targets, preds)
 ```
 
-## Current Version : '0.0.1'
 
 
-## Notebooks
+## Example Notebooks
 #### Bangla Handwritten Character Recognition using imgclassifier
 ```
 https://colab.research.google.com/drive/13pu3Mw7FVPGV-f_g2VhVOMiE-wrhPo3F?usp=sharing
