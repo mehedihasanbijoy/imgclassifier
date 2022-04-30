@@ -1,6 +1,6 @@
 <h1 align="center">imgclassifier</h1>
   <p align="center">
-    It is a naive image classifier developed on top of PyTorch. One can train a model and evaluate the performance (PR, RE, F1, ACC) of the model on a custom dataset by simply calling the <b>train</b> function of this package.
+    It is a naive image classifier developed on top of PyTorch. One can train a model and evaluate the performance of the model on a custom dataset by simply calling the <b>train</b> function of this package.
   </p>
 
 <h3 align="center">Current Version: :zero:.:zero:.:two:</h3>
@@ -13,6 +13,7 @@
 | :---         |     :---       |
 |<p>*Dataset<br>├── Train<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── classes<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── images<br>├── Validation<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── classes<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── images<br>├── Test<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── classes<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── images<br>*</p>    |  *Dataset<br>└── Classes<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; └── images<br>* </p>   |
 
+:heavy_check_mark: **Evaluation Criteria:** :heavy_minus_sign: Precision :heavy_minus_sign: Recall :heavy_minus_sign: F1 Score :heavy_minus_sign: Accuracy.
 
 ## Installation
 ```
