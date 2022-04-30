@@ -21,7 +21,7 @@
 
 ## Usage
 
-### Train and test the model using Custom directory structore
+### Train and test the model using "Custom" directory structure
 ```
 from imgclassifier import train
 
@@ -36,7 +36,7 @@ model, train_acc, train_loss, test_acc, targets, preds = train(
 )
 ```
 
-### Train and test the model using ImageFolder directory structure
+### Train and test the model using "ImageFolder" directory structure
 ```
 from imgclassifier import train
 
