@@ -53,7 +53,7 @@ model, train_acc, train_loss, test_acc, targets, preds = train(
 ```
 from imgclassifier import evaluation_report
 
-evaluation_report(targets, preds)
+pr, re, f1, acc = evaluation_report(targets, preds)
 ```
 
 
