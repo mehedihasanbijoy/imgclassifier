@@ -64,3 +64,7 @@ pr, re, f1, acc = evaluation_report(targets, preds)
 ```
 https://colab.research.google.com/drive/13pu3Mw7FVPGV-f_g2VhVOMiE-wrhPo3F?usp=sharing
 ```
+#### Animal Classification using imgclassifier
+```
+https://colab.research.google.com/drive/1BKg0sFqQsatqQUMT73KrRavhRYLPqsab?usp=sharing
+```
