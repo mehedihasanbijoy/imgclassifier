@@ -68,3 +68,18 @@ https://colab.research.google.com/drive/13pu3Mw7FVPGV-f_g2VhVOMiE-wrhPo3F?usp=sh
 ```
 https://colab.research.google.com/drive/1BKg0sFqQsatqQUMT73KrRavhRYLPqsab?usp=sharing
 ```
+
+## Cite The Repository
+If you find this work useful in your research, please consider citing:
+
+```
+@misc{imgclassifier,
+  author = {Bijoy, Mehedi Hasan},
+  title = {imgclassifier: A Python Library for Image Classification},
+  year = {2022},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/mehedihasanbijoy/imgclassifier}},
+  commit = {140cd8a298900f3924e7ec9088806382add00d64}
+}
+```
