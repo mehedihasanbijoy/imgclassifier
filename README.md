@@ -79,7 +79,6 @@ If you find this work useful in your research, please consider citing:
   year = {2022},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/mehedihasanbijoy/imgclassifier}},
-  commit = {140cd8a298900f3924e7ec9088806382add00d64}
+  howpublished = {\url{https://github.com/mehedihasanbijoy/imgclassifier}}
 }
 ```
